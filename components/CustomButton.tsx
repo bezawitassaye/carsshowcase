@@ -6,7 +6,7 @@ const CustomButton = () => {
       disabled={false}
       type={"button"}
       className={`custom-btn`}
-      onClick={()=>{}}
+    //   onClick={()=>{}}
     
     >
 
