@@ -22,6 +22,10 @@ const Hero = () => {
           handleClick={handleScroll}
         />
         </div> 
+
+        <div>
+          
+        </div>
       
     </div>
   )
