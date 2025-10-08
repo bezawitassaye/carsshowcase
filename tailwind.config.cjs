@@ -5,6 +5,14 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  // Ensure these utility classes are always generated (helps when JIT misses dynamic or multiline class strings)
+  safelist: [
+    'bg-primary-blue',
+    'text-white',
+    'mt-10',
+    'text-red-500',
+    'pt-36'
+  ],
   mode: "jit",
   theme: {
     extend: {
