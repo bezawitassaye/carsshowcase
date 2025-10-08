@@ -26,7 +26,11 @@
   .hero { display:flex; flex-direction:column; gap:1.25rem; position:relative; z-index:0; max-width:1440px; margin-left:auto; margin-right:auto; }
   @media (min-width:1280px) { .hero { flex-direction:row; } }
 
-  .hero__title { font-weight:800; font-size:50px; }
+  /* Ensure the hero has top padding even if Tailwind utilities aren't present */
+  .hero { padding-top: 9rem; }
+
+  /* Ensure title color and sizing regardless of generated utilities */
+  .hero__title { font-weight:800; font-size:50px;  }
   @media (min-width:640px) { .hero__title { font-size:64px; } }
   @media (min-width:1536px) { .hero__title { font-size:72px; } }
 
