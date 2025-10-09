@@ -22,6 +22,8 @@ module.exports = {
     'px-3',
     'sm:px-16',
     'mr-4'
+    , 'text-primary-blue',
+    'min-w-[130px]'
   ],
   mode: "jit",
   theme: {
