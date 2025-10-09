@@ -6,7 +6,7 @@ import {CarCard,Hero,CustomFilter, SearchBar} from "@/components";
 export default async function Home() {
  
   const allCars = await fetchCars()
-
+  console.log(allCars)
   const isdataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
 
   return (
