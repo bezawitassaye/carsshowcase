@@ -1,8 +1,7 @@
-import { CustomFilter, SearchBar } from "@/components";
-import CarCard from "@/components/CarCard";
-import Hero from "@/components/Hero";
-import { fetchCars } from "@/utils";
+import {  } from "@/components";
+import {fetchCars} from "@/utils";
 import Image from "next/image";
+import {CarCard,Hero,CustomFilter, SearchBar} from "@/components";
 
 export default async function Home() {
  
