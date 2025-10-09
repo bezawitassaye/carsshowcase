@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-
+import { footerLinks } from '@/constants'
 const Footer = () => {
   return (
     <footer className='flex flex-col text-black-100 mt-5 border-t border-gray-100'>
