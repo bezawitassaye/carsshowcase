@@ -1,7 +1,7 @@
 "use client"
 import { CarProps } from '@/types';
 import CustomButton from './CustomButton';
-import React from 'react'
+import React, { useState } from 'react'
 import { calculateCarRent } from '@/utils';
 import Image from 'next/image';
 
@@ -12,7 +12,8 @@ interface CarCardProps {
 
 const CarCard = ({ car }: CarCardProps) => {
     const { city_mpg, class: carClass, combination_mpg, cylinders, displacement, drive, fuel_type, highway_mpg, make, model, transmission, year } = car;
-
+     
+    const [isOpen, setIsOpen] = useState(false);
     const carrent = calculateCarRent(
         typeof city_mpg === "number" ? city_mpg : 20, // default mpg if missing
         Number(year)
@@ -67,6 +68,15 @@ const CarCard = ({ car }: CarCardProps) => {
                         </p>
                     </div>
 
+                  </div>
+
+                  <div className='car-card__btn-container'>
+                    <CustomButton
+                    title='View more'
+                    containerStyles='w-full py-[16px] rounded-full bg-blue-700'
+                    textStyles='text-white text-[14px] leading-[17px] font-bold'
+                    rightIcon='/right-arrow.svg'
+                    />
                   </div>
             </div>
         </div>
