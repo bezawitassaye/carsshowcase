@@ -1,13 +1,11 @@
-import type { NextConfig } from 'next';
 import path from 'path';
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  
   images: {
-    domains: ['cdn.imagin.studio'], // ✅ Add this
+    domains: ['cdn.imagin.studio'], // ✅ Allow car images from Imagin Studio
   },
-  // Explicitly set the tracing root to this project so Next doesn't pick a parent lockfile
-  outputFileTracingRoot: path.join(__dirname, '.'),
+  outputFileTracingRoot: path.join(__dirname, '.'), // ✅ Keeps build references local
 };
 
 export default nextConfig;
