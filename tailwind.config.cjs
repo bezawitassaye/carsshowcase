@@ -11,7 +11,17 @@ module.exports = {
     'text-white',
     'mt-10',
     'text-red-500',
-    'pt-36'
+    'pt-36',
+    // Navbar / header utilities
+    'bg-blue-50',
+    'bg-blue-600',
+    'text-white',
+    'py-4',
+    'py-1',
+    'px-6',
+    'px-3',
+    'sm:px-16',
+    'mr-4'
   ],
   mode: "jit",
   theme: {
