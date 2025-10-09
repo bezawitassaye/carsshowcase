@@ -4,6 +4,7 @@ import CustomButton from './CustomButton';
 import React, { useState } from 'react'
 import { calculateCarRent } from '@/utils';
 import Image from 'next/image';
+import CarDetails from './CarDetails';
 
 
 interface CarCardProps {
@@ -79,6 +80,8 @@ const CarCard = ({ car }: CarCardProps) => {
                     />
                   </div>
             </div>
+
+            <CarDetails/>
         </div>
     )
 }
