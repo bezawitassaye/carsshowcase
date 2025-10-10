@@ -3,7 +3,7 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ['cdn.imagin.studio'], // ✅ Allow car images from Imagin Studio
+    domains: ["images.pexels.com"],
   },
   outputFileTracingRoot: path.join(__dirname, '.'), // ✅ Keeps build references local
 };

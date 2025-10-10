@@ -2,7 +2,7 @@
 import { CarProps } from '@/types';
 import CustomButton from './CustomButton';
 import React, { useState } from 'react'
-import { calculateCarRent, generateCarImageUrl } from '@/utils';
+import { calculateCarRent } from '@/utils';
 import Image from 'next/image';
 import CarDetails from './CarDetails';
 
@@ -14,14 +14,14 @@ interface CarCardProps {
 
 const CarCard = ({ car }: CarCardProps) => {
     const { city_mpg, class: carClass, combination_mpg, cylinders, displacement, drive, fuel_type, highway_mpg, make, model, transmission, year } = car;
-
+     
     const [isOpen, setIsOpen] = useState(false);
     const carrent = calculateCarRent(
         typeof city_mpg === "number" ? city_mpg : 20, // default mpg if missing
         Number(year)
     );
 
-    console.log("Modal open?", isOpen);
+   console.log("Modal open?", isOpen);
 
     return (
         <div className='car-card group'>
@@ -43,13 +43,13 @@ const CarCard = ({ car }: CarCardProps) => {
 
 
             <div className='relative w-full h-40 my-3 object-contain'>
-                <Image src={generateCarImageUrl(car)} alt='car model' fill priority className='object-contain' />
+                <Image src="/hero.png" alt='car model' fill priority className='object-contain' />
             </div>
 
-
+            
 
             <div className='relative w-full mt-2'>
-                <div className='flex group-hover:invisible w-full justify-between text-gray'>
+                  <div className='flex group-hover:invisible w-full justify-between text-gray'>
                     <div className='flex flex-col justify-center items-center gap-2'>
                         <Image src="/steering-wheel.svg" width={20} height={20} alt='steering wheel' />
                         <p className='text-[14px]'>
@@ -60,39 +60,39 @@ const CarCard = ({ car }: CarCardProps) => {
                     <div className='flex flex-col justify-center items-center gap-2'>
                         <Image src="/tire.svg" width={20} height={20} alt='tire ' />
                         <p className='text-[14px]'>
-                            {drive.toUpperCase()}
+                           drive
                         </p>
                     </div>
 
                     <div className='flex flex-col justify-center items-center gap-2'>
                         <Image src="/gas.svg" width={20} height={20} alt='gas' />
                         <p className='text-[14px]'>
-                            {fuel_type.toUpperCase()}
+                            fuel
                         </p>
                     </div>
 
-                </div>
+                  </div>
 
-                <div className='car-card__btn-container'>
+                  <div className='car-card__btn-container'>
                     <CustomButton
-                        title='View more'
-                        containerStyles='w-full py-[16px] rounded-full bg-blue-700'
-                        textStyles='text-white text-[14px] leading-[17px] font-bold'
-                        rightIcon='/right-arrow.svg'
-                        handleClick={() => setIsOpen(true)} // ✅ this opens the modal
-                    />
+    title='View more'
+    containerStyles='w-full py-[16px] rounded-full bg-blue-700'
+    textStyles='text-white text-[14px] leading-[17px] font-bold'
+    rightIcon='/right-arrow.svg'
+    handleClick={() => setIsOpen(true)} // ✅ this opens the modal
+/>
 
-                </div>
+                  </div>
             </div>
 
             {/* <CarDetails isOpen={isOpen} closeModal={() => setIsOpen(false)} car={car} />
              */}
             <CarDetails
-                isOpen={isOpen}
-                closeModal={() => setIsOpen(false)}
-                car={car}
-            />
-
+        isOpen={isOpen}
+        closeModal={() => setIsOpen(false)}
+        car={car}
+      />
+      
         </div>
     )
 }

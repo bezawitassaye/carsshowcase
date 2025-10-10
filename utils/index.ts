@@ -2,11 +2,11 @@ import { CarProps } from "@/types";
 
 export async function fetchCars() {
   const headers = {
-    'x-rapidapi-key': 'cc8f2ab261msh1eb5b4e18a9f0eap16ecb2jsn55494e8c289d',
-    'x-rapidapi-host': 'cars-by-api-ninjas.p.rapidapi.com'
+    	'x-rapidapi-key': 'cc8f2ab261msh1eb5b4e18a9f0eap16ecb2jsn55494e8c289d',
+		'x-rapidapi-host': 'car-data.p.rapidapi.com'
   };
 
-  const response = await fetch('https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla', {
+  const response = await fetch('https://car-data.p.rapidapi.com/cars?limit=10&page=0', {
     headers: headers,
   });
    
@@ -14,7 +14,22 @@ export async function fetchCars() {
 
   return result;
 }
+// const url = 'https://vehicle-images2.p.rapidapi.com/vehicle_images_by_ymm?make=bmw&model=x3&year=2023&image_size=300';
+// const options = {
+// 	method: 'GET',
+// 	headers: {
+// 		'x-rapidapi-key': 'cc8f2ab261msh1eb5b4e18a9f0eap16ecb2jsn55494e8c289d',
+// 		'x-rapidapi-host': 'vehicle-images2.p.rapidapi.com'
+// 	}
+// };
 
+// try {
+// 	const response = await fetch(url, options);
+// 	const result = await response.text();
+// 	console.log(result);
+// } catch (error) {
+// 	console.error(error);
+// }
 export const calculateCarRent = (city_mpg: number, year: number) => {
   const basePricePerDay = 50; // Base rental price per day in dollars
   const mileageFactor = 0.1; // Additional rate per mile driven
@@ -30,22 +45,17 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
   return rentalRatePerDay.toFixed(0);
 };
 
-
 export const generateCarImageUrl = (car: CarProps, angle?: string) => {
   const url = new URL("https://cdn.imagin.studio/getimage");
+  const { make, model, year } = car;
 
-  // ✅ If car data is missing, use default (Toyota Camry 2022)
-  const make = car.make || "toyota";
-  const model = car.model || "camry";
-  const year = car.year || 2022;
+  url.searchParams.append('customer', 'hrjavascript-mastery');
+  url.searchParams.append('make', make);
+  url.searchParams.append('modelFamily', model.split(" ")[0]);
+  url.searchParams.append('zoomType', 'fullscreen');
+  url.searchParams.append('modelYear', `${year}`);
+  // url.searchParams.append('zoomLevel', zoomLevel);
+  url.searchParams.append('angle', `${angle}`);
 
-  // ✅ Use the demo key “hrjavascript-mastery” (no need for your own company)
-  url.searchParams.append("customer", "hrjavascript-mastery");
-  url.searchParams.append("make", make);
-  url.searchParams.append("modelFamily", model.split(" ")[0]);
-  url.searchParams.append("zoomType", "fullscreen");
-  url.searchParams.append("modelYear", `${year}`);
-  url.searchParams.append("angle", `${angle || 0}`);
-
-  return url.toString();
-};
+  return `${url}`;
+} 
